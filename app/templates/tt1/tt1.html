@@ -6,6 +6,20 @@
     Prozessen. Dafür werden in diesem Modul nützliche Bilanzgleichungen erstellt, charakterisierende Begriffe definiert
     (Wirkungsgrad, Entropie) und die Eigenschaften von wichtigen Stoffen beschrieben (Luft, Wasser, Kältemittel). Diese
     Grundlagen werden von den Teilnehmern in vielen praktischen Rechenaufgaben angewendet.</p>
+<hr>
+<h3>Check out the API for saturated water</h3>
+<p><a href="{{ url_for('tt1.saturated_water', property='T', value=50) }}">Temperature: T=50 °C</a><br>
+<a href="{{ url_for('tt1.saturated_water', property='P', value=2.7) }}">Pressure: P=2.7 bar</a><br>
+<a href="{{ url_for('tt1.saturated_water', property='P', value='[2.7, 2.8, 2.9]') }}">Pressure: P=[2.7, 2.8, 2.9] bar</a><br>
+<a href="{{ url_for('tt1.saturated_water', property='hf', value=546) }}">Enthalpy of fluid: hf=546 kJ/kg</a></p>
+<p>You can use the API also in MATLAB:</p>
+<code>
+    >> data = webread('<script>document.write(document.URL)</script>saturated_water/?property=hf&value=[546,547]')<br>
+    >> data = jsondecode(data)<br>
+    >> data = struct2table(data)<br>
+</code>
+<hr>
+<h3>Learning Videos</h3>
 <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kcNhwaVFk5s" frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
