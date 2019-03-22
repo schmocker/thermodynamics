@@ -3,4 +3,5 @@ Flask-Navigation
 
 numpy
 pandas
-
+scipy
+xlrd
