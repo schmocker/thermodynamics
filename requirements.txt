@@ -5,3 +5,8 @@ numpy
 pandas
 scipy
 xlrd
+
+matplotlib
+CoolProp
+pint
+prettytable

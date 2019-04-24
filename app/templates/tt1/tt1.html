@@ -8,10 +8,12 @@
     Grundlagen werden von den Teilnehmern in vielen praktischen Rechenaufgaben angewendet.</p>
 <hr>
 <h3>Check out the API for saturated water</h3>
+<p>Get all properties of saturated water using a URL with a corresponding input property:</p>
 <p><a href="{{ url_for('tt1.saturated_water', property='T', value=50) }}">Temperature: T=50 °C</a><br>
 <a href="{{ url_for('tt1.saturated_water', property='P', value=2.7) }}">Pressure: P=2.7 bar</a><br>
-<a href="{{ url_for('tt1.saturated_water', property='P', value='[2.7, 2.8, 2.9]') }}">Pressure: P=[2.7, 2.8, 2.9] bar</a><br>
 <a href="{{ url_for('tt1.saturated_water', property='hf', value=546) }}">Enthalpy of fluid: hf=546 kJ/kg</a></p>
+<p>It is also possible to get multiple states with one request using an array as input value:</p>
+<p><a href="{{ url_for('tt1.saturated_water', property='P', value='[2.7, 2.8, 2.9]') }}">Pressures: P=[2.7, 2.8, 2.9] bar</a></p>
 <p>You can use the API also in MATLAB:</p>
 <code>
     >> data = webread('<script>document.write(document.URL)</script>saturated_water/?property=hf&value=[546,547]')<br>

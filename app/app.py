@@ -9,6 +9,7 @@ nav = Navigation(app)
 nav.Bar('top', [
     nav.Item('Home', 'main.home'),
     nav.Item('tt1', 'tt1.tt1'),
+    nav.Item('Fluid/State', 'tt1.fluid_state'),
     nav.Item('EoS', 'eos.eos', items=[
         nav.Item('Equation of State', 'eos.eos'),
         nav.Item('T-S-Diagram', 'eos.ts'),
