@@ -10,3 +10,5 @@ matplotlib
 CoolProp
 pint
 prettytable
+
+tabulate
