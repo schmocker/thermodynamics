@@ -1,5 +1,5 @@
 from flask import Flask
-from .routes import main_routes, eos_routes, tt1_routes, page_not_found, internal_server_error
+from .routes import main_routes, eos_routes, tt1_routes, page_not_found, internal_server_error, Dampfturbine_routes
 from flask_navigation import Navigation
 
 app = Flask(__name__)
@@ -14,11 +14,13 @@ nav.Bar('top', [
         nav.Item('Equation of State', 'eos.eos'),
         nav.Item('T-S-Diagram', 'eos.ts'),
     ]),
+    nav.Item('Dampfturbine', 'Dampfturbine.main'),
 ])
 
 app.register_blueprint(main_routes)
 app.register_blueprint(eos_routes)
 app.register_blueprint(tt1_routes)
+app.register_blueprint(Dampfturbine_routes)
 
 app.register_error_handler(404, page_not_found)
 app.register_error_handler(500, internal_server_error)
