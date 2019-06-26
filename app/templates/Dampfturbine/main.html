@@ -1,19 +1,116 @@
 {% extends 'layout.html' %}
 
+{% set T1 = 500 %}
+{% set p1 = 2000000 %}
+{% set p2 = 10000 %}
+{% set x_Dampft = 0.95 %}
+
 {% block content %}
-<h1>Dampfturbine</h1>
-Dampf wird in einer gut isolierten, stationär laufenden Turbine von Zustand 1 (p = 2 MPa, T = 500 °C) auf Zustand 2
+    <h1>Dampfturbine</h1>
+    Dampf wird in einer gut isolierten, stationär laufenden Turbine von Zustand 1 (p = 2 MPa, T = 500 °C) auf Zustand 2
     (p = 10 kPa, x_Dampf = 0.95) entspannt. Die Änderungen in kinetischen und potentiellen Energien können vernachlässigt werden.
 
     <ol type="a">
-    <!--- <ul style="list-style-type:lower-latin"> --->
+        <!--- <ul style="list-style-type:lower-latin"> --->
         <li>Bestimmen Sie die spezifische Turbinenarbeit, Wdot_CV/mdot, in kJ/kg und die spezifische Entropieproduktionsrate, sigmadot_CV/mdot, in kJ/(kg K).</li>
         <li>Ist der beschreibene Prozess möglich? Erklären Sie Ihre Antwort.</li>
         <li>Zeichnen Sie den Prozess in einem T-s Diagramm</li>
         <li>Bestimmen Sie die spezifische Turbinenarbeit in kJ/kg, für den Fall, dass die Turbine den Dampf <em>reversibel</em> auf den gleichen Enddruck entspannt.</li>
         <li>Bestimmen Sie den isentropen Wirkungsgrad der Turbine, din in Teil a berechnet wurde.</li>
-    <!--- </ul> --->
+        <!--- </ul> --->
     </ol>
 
     <h2>Lösung</h2>
+    <h5>Teilaufgabe a</h5>
+    bekannt ist
+    <ul>
+        <li>Zustand 1: T = 500 °C, p = 2 MPa = 2e6 Pa</li>
+        <li>Zustand 2: p = 10 kPa = 1e4 Pa, x_Dampf = 0.95</li>
+    </ul>
+    daraus folgt
+    <ul>
+        <li>Zustand 1: überhitzter Wasserdampf -> Tabelle A-3</li>
+        <li>Zustand 2: Nassdampfgebiet -> Tabelle A-1</li>
+    </ul>
+    Enthalpie und Entropie für Zustände bestimmen, <br>
+    wobei zu überprüfen, ob Zustand in Tabelle oder ob interpoliert werden muss
+    <ul>
+        <li>Zustand 1</li>
+        <ol type="i">
+            <li>in Tabelle<br>
+                h_1 = 3467.6 kJ/kg, s_1 = 7.4317 kJ/kg K
+            </li>
+            <li>nicht in Tabelle<br>
+                ...
+            </li>
+
+        </ol>
+        <li>Zustand 2</li>
+        <ol type="i">
+            <li>in Tabelle<br>
+                h2_g = 2584.7 kJ/kg, h2_f = 191.83 kJ/kg, <br>
+                s2_g = 7.77516 kJ/kg K, s2_f = 7.4317 kJ/kg K
+            </li>
+            <li>nicht in Tabelle<br>
+                ...
+            </li>
+            <li>"Nassdampfbereich" berechnen</li>
+                h2 = h2_f + x (h2_g-h2_f) <br>
+                &nbsp &nbsp &nbsp &nbsp = 191.83 kJ/kg + 0.95 (2584.7-191.83) kJ/kg <br>
+                &nbsp &nbsp &nbsp &nbsp = 2465.06 kJ/kg
+        </ol>
+    </ul>
+
+    Massenbilanz <br>
+    dm_CV/dt = mdot_1 - mdot_2 <br>
+    ?Annahme gleiche Massenströme? => dm_CV/dt = 0 <br>
+    => dm_CV/dt = mdot_1 - mdot_2 = 0 <br>
+    => mdot_1 = mdot_2 = mdot
+
+    Energiebilanz <br>
+    dE_CV/dt = Delta_KE + Delta_PE + mdot_1 h1 - mdot_2 h2 + Wdot_CV + Qdot_CV
+    <ul>
+        <li>kinetische und potentielle Energien vernachlässigbar: Delta_KE = Delta_PE = 0</li>
+        <li>stationär: dE_CV/dt = 0</li>
+        <li>gut isoliert, adiabat: Qdot_CV = 0</li>
+    </ul>
+    es folgt <br>
+    dE_CV/dt = 0 = mdot_1 h1 - mdot_2 h2 + Wdot_CV <br>
+    Wdot_CV = mdot_2 h2 - mdot_1 h1 <br>
+    mit Massenbilanz <br>
+    Wdot_CV = mdot (h2 - h1) <br>
+    Wdot_CV/mdot = h2 - h1 = 2465.06 kJ/kg - 3467.6 kJ/kg = -1002.5 kJ/kg
+
+    Entropiebilanz <br>
+    dS_CV/dt = mdot_1 s1 - mdot_2 s2 + Qdot_CV/T + sigmadot_CV
+    <ul>
+        <li>stationär: dS_CV/dt = 0</li>
+        <li>gut isoliert, adiabat: Qdot_CV = 0</li>
+    </ul>
+    daraus folgt <br>
+    dS_CV/dt = mdot (s1 - s2) + sigmadot_CV = 0 <br>
+    => sigmadot_CV/mdot = s2 - s1 = 7.7752 kJ/kg K - 7.4317 kJ/kg K = 0.3435 kJ/kg K
+
+    <h5>Teilaufgabe b</h5>
+    Prozess ist nur möglich, wenn die spezifische Entropieproduktionsrate sigmadot_CV/mdot grösser als 0 ist <br>
+    von Teilaufgabe a): sigmadot_CV/mdot = 0.3435 kJ/kg K und somit grösser als 0 <br>
+    => Prozess ist möglich, da mdot != 0 und somit sigmadot_CV > 0
+
+    <h5>Teilaufgabe c</h5>
+    Diagramm ....
+
+    <h5>Teilaufgabe d</h5>
+    reversibler Prozess bedeutet dass sigmadot_CV = 0, <br>
+    daraus folgt somit dass s2_(s) = s1 ist <br>
+    der Zustand ist weiterhin im Zweiphasengebiet (warum???), somit kann über das Hebelgesetz, der Dampfanteil berechnet werden <br>
+    x2_s = (s2_s-s1_f)/(s1_g-s1_f) = (z.4317-0.6493) kJ/kg K /(8.1502-0.6493) kJ/kg K = 0.9042 <br>
+    damit kann nun die Enthalpie berechnet werden
+    h2_s = h1_f + x2_s (h2_g - h2_f) = ... = 2355.4 kJ/kg <br>
+    daraus folgt für die spezifische Turbinenarbeit <br>
+    Wdot_CV/mdot = h2_s - h1 = ... = 1112.62 kJ/kg
+
+    <h5>Teilaufgabe e</h5>
+    eta_isen = (Wdot_CV/mdot)_real / (Wdot_CV/mdot)_ideal = dh_real/dh_ideal = 1002.5 kJ/kg / 1112.6 kJ/kg = 0.9014
+
+
 {% endblock %}
