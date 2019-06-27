@@ -12,7 +12,7 @@
 
     <ol type="a">
         <!--- <ul style="list-style-type:lower-latin"> --->
-        <li>Bestimmen Sie die spezifische Turbinenarbeit, Wdot_CV/mdot, in kJ/kg und die spezifische Entropieproduktionsrate, sigmadot_CV/mdot, in kJ/(kg K).</li>
+        <li>Bestimmen Sie die spezifische Turbinenarbeit, Wdot_CV/\dot{m}, in kJ/kg und die spezifische Entropieproduktionsrate, sigmadot_CV/\dot{m}, in kJ/(kg\,K).</li>
         <li>Ist der beschreibene Prozess möglich? Erklären Sie Ihre Antwort.</li>
         <li>Zeichnen Sie den Prozess in einem T-s Diagramm</li>
         <li>Bestimmen Sie die spezifische Turbinenarbeit in kJ/kg, für den Fall, dass die Turbine den Dampf <em>reversibel</em> auf den gleichen Enddruck entspannt.</li>
@@ -24,21 +24,21 @@
     <h5>Teilaufgabe a</h5>
     bekannt ist
     <ul>
-        <li>Zustand 1: T = 500 °C, p = 2 MPa = 2e6 Pa</li>
-        <li>Zustand 2: p = 10 kPa = 1e4 Pa, x_Dampf = 0.95</li>
+        <li>Zustand 1: \(T = 500~\mathrm{°C}\), \(p = 2~\mathrm{MPa} = 2e6~\mathrm{Pa}\)</li>
+        <li>Zustand 2: \(p = 10~\mathrm{kPa} = 1e4~\mathrm{Pa}\), \(x_{Dampf} = 0.95\)</li>
     </ul>
     daraus folgt
     <ul>
-        <li>Zustand 1: überhitzter Wasserdampf -> Tabelle A-3</li>
-        <li>Zustand 2: Nassdampfgebiet -> Tabelle A-1</li>
+        <li>Zustand 1: überhitzter Wasserdampf &rarr; Tabelle A-3</li>
+        <li>Zustand 2: Nassdampfgebiet &rarr; Tabelle A-1</li>
     </ul>
-    Enthalpie und Entropie für Zustände bestimmen, <br>
+    <b>Enthalpie und Entropie</b> für Zustände bestimmen, <br>
     wobei zu überprüfen, ob Zustand in Tabelle oder ob interpoliert werden muss
     <ul>
         <li>Zustand 1</li>
         <ol type="i">
             <li>in Tabelle<br>
-                h_1 = 3467.6 kJ/kg, s_1 = 7.4317 kJ/kg K
+                \(h_1 = 3467.6~\mathrm{kJ/kg}\), \(s_1 = 7.4317~\mathrm{kJ/kg\,K}\)
             </li>
             <li>nicht in Tabelle<br>
                 ...
@@ -48,69 +48,88 @@
         <li>Zustand 2</li>
         <ol type="i">
             <li>in Tabelle<br>
-                h2_g = 2584.7 kJ/kg, h2_f = 191.83 kJ/kg, <br>
-                s2_g = 7.77516 kJ/kg K, s2_f = 7.4317 kJ/kg K
+                \(h_{2,g} = 2584.7~\mathrm{kJ/kg}\), \(h_{2,f} = 191.83~\mathrm{kJ/kg}\), <br>
+                \(s_{2,g} = 7.77516~\mathrm{kJ/kg\,K}\), \(s_{2,f} = 7.4317~\mathrm{kJ/kg\,K}\)
             </li>
             <li>nicht in Tabelle<br>
                 ...
             </li>
             <li>"Nassdampfbereich" berechnen</li>
-                h2 = h2_f + x (h2_g-h2_f) <br>
-                &nbsp &nbsp &nbsp &nbsp = 191.83 kJ/kg + 0.95 (2584.7-191.83) kJ/kg <br>
-                &nbsp &nbsp &nbsp &nbsp = 2465.06 kJ/kg
+                \(h_2 = h_{2,f} + x \left(h_{2,g}-h_{2,f}\right)\) <br>
+                \( \begin{align}
+                    h_2 & = h_{2,f} + x \left(h_{2,g}-h_{2,f}\right) \\
+                        & = 191.83 kJ/kg + 0.95 \, (2584.7-191.83) kJ/kg \\
+                        & = 2465.06 kJ/kg
+                \end{align} \)
         </ol>
     </ul>
 
-    Massenbilanz <br>
-    dm_CV/dt = mdot_1 - mdot_2 <br>
-    ?Annahme gleiche Massenströme? => dm_CV/dt = 0 <br>
-    => dm_CV/dt = mdot_1 - mdot_2 = 0 <br>
-    => mdot_1 = mdot_2 = mdot
+    <b>Massenbilanz</b> <br>
+    \( \frac{d\,m_{CV}}{dt} = \dot{m}_1 - \dot{m}_2 \) <br>
+    ?Annahme gleiche Massenströme?: <br>
+    \(\begin{align}
+        & \Rightarrow & \frac{d\,m_{CV}}{dt} & = 0 \\
+        & \Leftrightarrow & \frac{d\,m_{CV}}{dt} & = \dot{m}_1 - \dot{m}_2 = 0 \\
+        & \Leftrightarrow & \dot{m}_1 & = \dot{m}_2 = \dot{m}
+    \end{align} \)
+    <br> <br>
 
-    Energiebilanz <br>
-    dE_CV/dt = Delta_KE + Delta_PE + mdot_1 h1 - mdot_2 h2 + Wdot_CV + Qdot_CV
+    <b>Energiebilanz</b> <br>
+    \( \frac{d\,E_{CV}}{dt} = \Delta{KE} + \Delta{PE} + \dot{m}_1 h_1 - \dot{m}_2 h_2 + \dot{W}_{CV} + \dot{Q}_{CV} \)
     <ul>
-        <li>kinetische und potentielle Energien vernachlässigbar: Delta_KE = Delta_PE = 0</li>
-        <li>stationär: dE_CV/dt = 0</li>
-        <li>gut isoliert, adiabat: Qdot_CV = 0</li>
+        <li>kinetische und potentielle Energien vernachlässigbar: \(\Delta{KE} = \Delta{PE} = 0\)</li>
+        <li>stationär: \(\frac{d\,E_{CV}}{dt} = 0\)</li>
+        <li>gut isoliert, adiabat: \(\dot{Q}_{CV} = 0\)</li>
     </ul>
     es folgt <br>
-    dE_CV/dt = 0 = mdot_1 h1 - mdot_2 h2 + Wdot_CV <br>
-    Wdot_CV = mdot_2 h2 - mdot_1 h1 <br>
+    \( \begin{align}
+    & \Rightarrow & \frac{d\,E_{CV}}{dt} & = 0 = \dot{m}_1 h_1 - \dot{m}_2 h_2 + \dot{W}_{CV} \\
+    & \Leftrightarrow & \dot{W}_{CV} & = \dot{m}_2 h_2 - \dot{m}_1 h_1
+    \end{align} \)
+    <br>
     mit Massenbilanz <br>
-    Wdot_CV = mdot (h2 - h1) <br>
-    Wdot_CV/mdot = h2 - h1 = 2465.06 kJ/kg - 3467.6 kJ/kg = -1002.5 kJ/kg
+    \( \begin{align}
+    & \Rightarrow & \dot{W}_{CV} & = \dot{m} (h_2 - h_1) \\
+    & \Leftrightarrow & \frac{\dot{W}_{CV}}{\dot{m}} & = h_2 - h_1 = 2465.06~\mathrm{kJ/kg} - 3467.6~\mathrm{kJ/kg} = -1002.5~\mathrm{kJ/kg}
+    \end{align} \)
+    <br> <br>
 
-    Entropiebilanz <br>
-    dS_CV/dt = mdot_1 s1 - mdot_2 s2 + Qdot_CV/T + sigmadot_CV
+    <b>Entropiebilanz</b> <br>
+    \( \frac{d\,S_{CV}}{dt} = \dot{m}_1 s_1 - \dot{m}_2 s_2 + \frac{\dot{Q}_{CV}}{T} + \dot{\sigma}_{CV} \)
     <ul>
-        <li>stationär: dS_CV/dt = 0</li>
-        <li>gut isoliert, adiabat: Qdot_CV = 0</li>
+        <li>stationär: \(\frac{d\,S_{CV}}{dt} = 0\)</li>
+        <li>gut isoliert, adiabat: \(\dot{Q}_{CV} = 0\)</li>
     </ul>
     daraus folgt <br>
-    dS_CV/dt = mdot (s1 - s2) + sigmadot_CV = 0 <br>
-    => sigmadot_CV/mdot = s2 - s1 = 7.7752 kJ/kg K - 7.4317 kJ/kg K = 0.3435 kJ/kg K
+    \( \begin{align}
+    & \Rightarrow & \frac{d\,S_{CV}}{dt} & = \dot{m} \left(s_1 - s_2\right) + \dot{\sigma}_{CV} = 0 \\
+    & \Leftrightarrow & \frac{\dot{\sigma}_{CV}}{\dot{m}} & = s_2 - s_1 = 7.7752~\mathrm{kJ/kg\,K} - 7.4317~\mathrm{kJ/kg\,K} = 0.3435~\mathrm{kJ/kg\,K}
+    \end{align} \)
+    <br> <br>
 
     <h5>Teilaufgabe b</h5>
-    Prozess ist nur möglich, wenn die spezifische Entropieproduktionsrate sigmadot_CV/mdot grösser als 0 ist <br>
-    von Teilaufgabe a): sigmadot_CV/mdot = 0.3435 kJ/kg K und somit grösser als 0 <br>
-    => Prozess ist möglich, da mdot != 0 und somit sigmadot_CV > 0
+    Prozess ist nur möglich, wenn die spezifische Entropieproduktionsrate \( \frac{\dot{\sigma}_{CV}}{\dot{m}} \) grösser als 0 ist <br>
+    von Teilaufgabe a): \( \frac{\dot{\sigma}_{CV}}{\dot{m}} = 0.3435~\mathrm{kJ/kg\,K} \) und somit grösser als 0 <br>
+    \(\Rightarrow\) Prozess ist möglich, da \(\dot{m} \neq 0 \) und somit \(\dot{\sigma}_{CV} > 0 \)
+    <br> <br>
 
     <h5>Teilaufgabe c</h5>
     Diagramm ....
+    <br> <br>
 
     <h5>Teilaufgabe d</h5>
-    reversibler Prozess bedeutet dass sigmadot_CV = 0, <br>
-    daraus folgt somit dass s2_(s) = s1 ist <br>
+    Bei einem reversiblen Prozess  ist \(\dot{\sigma}_{CV} = 0\), <br>
+    daraus folgt somit, dass \(s_{2,s} = s_1\) ist <br>
     der Zustand ist weiterhin im Zweiphasengebiet (warum???), somit kann über das Hebelgesetz, der Dampfanteil berechnet werden <br>
-    x2_s = (s2_s-s1_f)/(s1_g-s1_f) = (z.4317-0.6493) kJ/kg K /(8.1502-0.6493) kJ/kg K = 0.9042 <br>
-    damit kann nun die Enthalpie berechnet werden
-    h2_s = h1_f + x2_s (h2_g - h2_f) = ... = 2355.4 kJ/kg <br>
+    \( x_{2,s} = \frac{s_{2,s}-s_{1,f}}{s_{1,g}-s_{1,f}} = \frac{(7.4317-0.6493)~\mathrm{kJ/kg\,K}}{(8.1502-0.6493)~\mathrm{kJ/kg\,K}} = 0.9042 \) <br>
+    damit kann nun die Enthalpie berechnet werden <br>
+    \( h_{2,s} = h_{2,f} + x_{2,s} \left(h_{2,g} - h_{2,f}\right) = ... = 2355.4~\mathrm{kJ/kg} \) <br>
     daraus folgt für die spezifische Turbinenarbeit <br>
-    Wdot_CV/mdot = h2_s - h1 = ... = 1112.62 kJ/kg
+    \( \frac{\dot{W}_{CV}}{\dot{m}} = h_{2,s} - h_1 = ... = 1112.62~\mathrm{kJ/kg} \)
+    <br> <br>
 
     <h5>Teilaufgabe e</h5>
-    eta_isen = (Wdot_CV/mdot)_real / (Wdot_CV/mdot)_ideal = dh_real/dh_ideal = 1002.5 kJ/kg / 1112.6 kJ/kg = 0.9014
+    \(\eta_{isen} = \frac{\left(\frac{\dot{W}_{CV}}{\dot{m}}\right)_{real} }{ \left(\frac{\dot{W}_{CV}}{\dot{m}}\right)_{ideal}} = \frac{\Delta\,h_{real}}{\Delta\,h_{ideal}} = \frac{1002.5~\mathrm{kJ/kg}}{1112.6~\mathrm{kJ/kg}} = 0.9014\)
 
 
 {% endblock %}
